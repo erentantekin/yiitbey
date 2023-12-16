@@ -7,5 +7,8 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-# Run hello.py when the container launches
+# Install Flask
+RUN pip install Flask
+
+# Run the Flask application
 CMD ["python", "app.py"]

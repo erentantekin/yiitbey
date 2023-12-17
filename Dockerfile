@@ -1,20 +1,14 @@
-# Use the official Python image from Docker Hub
+# Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
-# Set the working directory
+# Set the working directory to /app
 WORKDIR /app
 
-# Copy the requirements file into the container
-COPY requirements.txt .
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# Install the required packages
-RUN pip install --no-cache-dir -r requirements.txt
+# Install Flask
+RUN pip install Flask
 
-# Copy the rest of the application code into the container
-COPY . .
-
-# Expose the port your application runs on (default for Flask is 5000)
-EXPOSE 5000
-
-# Command to run your application
+# Run the Flask application
 CMD ["python", "app.py"]
